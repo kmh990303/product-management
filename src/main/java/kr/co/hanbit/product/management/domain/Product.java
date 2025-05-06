@@ -14,4 +14,8 @@ public class Product {
     public Boolean sameId(Long id) {
         return this.id.equals(id);
     }
+
+    public Boolean containsName(String name) {
+        return this.name.contains(name);
+    }
 }
