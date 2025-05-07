@@ -28,10 +28,28 @@ public class ProductController {
         return simpleProductService.findById(id);
     }
 
+//    @RequestMapping(value = "/products", method = RequestMethod.GET)
+//    public List<ProductDto> findAllProduct() {
+//        return simpleProductService.findAll();
+//    }
+
     @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public List<ProductDto> findAllProduct() {
-        return simpleProductService.findAll();
+    public List<ProductDto> findProducts(@RequestParam(required = false) String name) {
+        if (null == name) {
+            return simpleProductService.findAll();
+        }
+
+        return simpleProductService.findByNameContaining(name);
     }
 
+    @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT)
+    public ProductDto updateProduct(@PathVariable Long id, @RequestBody ProductDto productDto) {
+        productDto.setId(id);
+        return simpleProductService.update(productDto);
+    }
 
+    @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)
+    public void deleteProduct(@PathVariable Long id) {
+        simpleProductService.delete(id);
+    }
 }
