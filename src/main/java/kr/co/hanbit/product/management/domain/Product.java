@@ -21,14 +21,36 @@ public class Product {
     @Min(0)
     private Integer amount;
 
-//    public Product(Long id, String name, Integer price, Integer amount) {
-//        if (name.length() > 100 || name.length() < 1) {
-//            //  인스턴스 생성 실패 예외 던지기
-//        }
-//    }
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     public Boolean sameId(Long id) {
