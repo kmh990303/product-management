@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import jakarta.validation.Valid;
+
+
 @RestController
 public class ProductController {
 
@@ -19,7 +22,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/products", method = RequestMethod.POST)
-    public ProductDto createProduct(@RequestBody ProductDto productDto) {
+    public ProductDto createProduct(@Valid @RequestBody ProductDto productDto) {
         return simpleProductService.add(productDto);
     }
 

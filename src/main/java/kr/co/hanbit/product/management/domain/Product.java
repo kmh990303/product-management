@@ -1,13 +1,31 @@
 package kr.co.hanbit.product.management.domain;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
+
 import java.util.Objects;
 
 public class Product {
 
     private Long id;
+
+    @Size(min = 1, max = 100)
     private String name;
+
+    @Max(1_000_000)
+    @Min(0)
     private Integer price;
+
+    @Max(9_999)
+    @Min(0)
     private Integer amount;
+
+//    public Product(Long id, String name, Integer price, Integer amount) {
+//        if (name.length() > 100 || name.length() < 1) {
+//            //  인스턴스 생성 실패 예외 던지기
+//        }
+//    }
 
     public void setId(Long id) {
         this.id = id;
